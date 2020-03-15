@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Chrome note extension",
+  "version": "1.0",
+  "icons": {
+    "16": "images/icons8-notepad-50.png",
+    "48": "images/icons8-notepad-50.png",
+    "128": "images/icons8-notepad-50.png"
+  },
+  "description": "Chrome note extension",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "unlimitedStorage",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js",
+      "util/chrome.js",
+      "util/other.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {}
+  }
+}
