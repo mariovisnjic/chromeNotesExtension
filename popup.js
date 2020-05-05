@@ -1,17 +1,5 @@
 'use strict';
 
-/*document.getElementById("sendXHR").onclick = function (){
-    setToStorage("test", "3")
-        .then(async () => {
-            const storageValue = await getFromStorage('test')
-            const currentUrl = await getCurrentTabUrl();
-            const extractedDomain = extractDomain(currentUrl)
-            console.log("storageValue is ",storageValue)
-            console.log("currentUrl is ",currentUrl)
-            console.log("currentDomain is ",extractedDomain)
-        })
-}*/
-
 document.getElementById("submitNewNote").onclick = async function () {
     const newNoteValue = document.getElementById("newNoteInput").value
     const currentUrl = await getCurrentTabUrl();

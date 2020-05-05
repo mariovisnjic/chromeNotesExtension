@@ -26,8 +26,6 @@ const manageExtensionIcon = async () => {
     const tabNotes = await getFromStorage(domain);
 
     //if no notes, tabnotes can return number
-    console.log(tabNotes)
-    console.log(typeof tabNotes)
     if(!tabNotes || typeof tabNotes === 'number'){
         setBadgeColor('green')
         setBadgeText("");
