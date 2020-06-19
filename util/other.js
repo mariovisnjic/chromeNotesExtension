@@ -11,9 +11,9 @@ const constructStorageEntry = (url, note) => {
 }
 
 const extractStatsFromNotes = (tabNotes, currentUrl) => {
-    const numberOfNotes = tabNotes.length !== 0 ? tabNotes.length.toString() || ""
-    const hasCurrentPage = tabNotes.filter(note => note.url === currentUrl).length || 0
-    return { numberOfNotes, hasCurrentPage}
+    const numberOfNotes = tabNotes.length !== 0 ? tabNotes.length.toString() : "";
+    const hasCurrentPage = numberOfNotes ? tabNotes.filter(note => note.url === currentUrl).length : 0;
+    return { hasCurrentPage, numberOfNotes }
 }
 
 //on tab change get all notes for that domain

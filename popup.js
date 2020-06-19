@@ -24,45 +24,47 @@ const tableCreate = async () => {
     const extractedDomain = extractDomain(currentUrl);
     const tabNotes = await getFromStorage(extractedDomain);
 
-    tabNotes.map(note => {
-        const tr = document.createElement('tr');
+    if(tabNotes){
+        tabNotes.map(note => {
+            const tr = document.createElement('tr');
 
-        //td values from note
-        Object.values(note).map((value, index) => {
-            var td = document.createElement('td');
+            //td values from note
+            Object.values(note).map((value, index) => {
+                var td = document.createElement('td');
 
-            // url index
-            if (index === 2) {
-                var a = document.createElement('a');
-                a.appendChild(document.createTextNode('Link'));
-                a.title = value;
-                a.href = '#';
-                a.onclick = function () {
-                    openTab(value)
-                };
-                td.appendChild(a);
-                tr.appendChild(td);
-                currentUrl === value ? tr.classList.add("currentPage") : ''
-                return
-            }
+                // url index
+                if (index === 2) {
+                    var a = document.createElement('a');
+                    a.appendChild(document.createTextNode('Link'));
+                    a.title = value;
+                    a.href = '#';
+                    a.onclick = function () {
+                        openTab(value)
+                    };
+                    td.appendChild(a);
+                    tr.appendChild(td);
+                    currentUrl === value ? tr.classList.add("currentPage") : ''
+                    return
+                }
 
-            // show other as text
-            td.appendChild(document.createTextNode(value));
-            tr.appendChild(td)
+                // show other as text
+                td.appendChild(document.createTextNode(value));
+                tr.appendChild(td)
+            })
+
+            // bin node
+            const deleteField = document.createElement('td');
+            const binImage = document.createElement("IMG");
+            setImageAttributes(binImage, note)
+            deleteField.appendChild(binImage)
+            tr.appendChild(deleteField)
+
+            tableBody.appendChild(tr);
         })
 
-        // bin node
-        const deleteField = document.createElement('td');
-        const binImage = document.createElement("IMG");
-        setImageAttributes(binImage, note)
-        deleteField.appendChild(binImage)
-        tr.appendChild(deleteField)
-
-        tableBody.appendChild(tr);
-    })
-
-    table.appendChild(tableBody);
-    body.appendChild(table)
+        table.appendChild(tableBody);
+        body.appendChild(table)
+    }
 }
 
 window.onload = async function () {
